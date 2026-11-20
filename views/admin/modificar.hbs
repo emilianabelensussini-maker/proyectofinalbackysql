@@ -1,0 +1,27 @@
+<div class="container" style="margin:100px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Modificar foto</h4>
+            <form action="/admin/galeria/modificar" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{foto.id}}">
+                <input type="hidden" name="img_original" value="{{foto.img_id}}">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Título o descripción" value="{{foto.titulo}}" name="titulo">
+                </div>
+                <div class="mb-3">
+                    <p class="mb-1">Imagen actual:</p>
+                    {{{foto.imagen}}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Reemplazar por otra imagen (opcional)</label>
+                    <input type="file" class="form-control" name="imagen" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary">Modificar</button>
+                <a href="/admin/galeria" class="btn btn-outline-secondary">Cancelar</a>
+            </form>
+            {{#if error}}
+                <h5 class="text-danger mt-3">{{message}}</h5>
+            {{/if}}
+        </div>
+    </div>
+</div>

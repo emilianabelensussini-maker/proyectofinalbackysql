@@ -1,0 +1,44 @@
+<div class="container" style="margin-top: 80px;">
+    <div class="row">
+        <p class="text-end">Hola {{usuario}}! <a class="btn btn-danger" href="/admin/login/logout">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a></p>
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <h3>Galería de fotos</h3>
+        </div>
+        <div class="col-5 text-end">
+            <a class="btn btn-success" href="/admin/galeria/agregar"><i class="fa fa-plus"></i> Nueva foto</a>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <table class="table align-middle">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Título</th>
+                        <th class="text-end">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each fotos}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{{imagen}}}</td>
+                        <td>{{titulo}}</td>
+                        <td class="text-end">
+                            <a href="/admin/galeria/modificar/{{id}}" title="Editar" class="btn btn-sm btn-secondary"><i class="fa fa-pencil"></i></a>
+                            <a href="/admin/galeria/eliminar/{{id}}" title="Eliminar" class="btn btn-sm btn-secondary" onclick="return confirm('¿Eliminar esta foto?')"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">Todavía no hay fotos cargadas.</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
